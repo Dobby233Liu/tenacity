@@ -469,12 +469,24 @@ public:
 IMPLEMENT_APP_NO_MAIN(TenacityApp)
 IMPLEMENT_WX_THEME_SUPPORT
 
+#ifdef __WXMSW__
+extern "C" int WINAPI WinMain(HINSTANCE hInstance,
+                              HINSTANCE hPrevInstance,
+                              wxCmdLineArgType lpCmdLine,
+                              int nCmdShow)
+{
+   wxDISABLE_DEBUG_SUPPORT();
+
+   return wxEntry(hInstance, hPrevInstance, lpCmdLine, nCmdShow);
+}
+#else
 int main(int argc, char *argv[])
 {
    wxDISABLE_DEBUG_SUPPORT();
 
    return wxEntry(argc, argv);
 }
+#endif
 #else
 IMPLEMENT_APP(TenacityApp)
 #endif
