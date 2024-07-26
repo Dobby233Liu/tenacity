@@ -397,9 +397,7 @@ static PaTime util_GetTime( void )
 
 #elif defined( __WXMSW__ )
 
-#include "profileapi.h"
-#include "sysinfoapi.h"
-#include "timeapi.h"
+#include <windows.h>
 
 static int usePerformanceCounter_;
 static double secondsPerTick_;
